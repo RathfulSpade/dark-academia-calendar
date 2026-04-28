@@ -1,31 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap');
+
 body{
     margin:0;
     padding:0;
     background:transparent;
-    font-family: Georgia, serif;
-    color:#d9d9d9;
+    overflow:hidden;
+    font-family:'Cormorant Garamond', serif;
+    color:#f5f5f5;
+}
+
+/* Fog animation */
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    top:0;
+    left:-30%;
+    width:160%;
+    height:100%;
+    background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+    animation:fogMove 28s linear infinite;
+    pointer-events:none;
+}
+
+body::after{
+    animation-duration:40s;
+    opacity:.5;
+}
+
+@keyframes fogMove{
+    from{transform:translateX(0);}
+    to{transform:translateX(18%);}
 }
 
 .calendar-box{
-    width:700px;
-    padding:25px;
-    background:rgba(0,0,0,0.35);
-    backdrop-filter: blur(4px);
-    border:1px solid rgba(255,255,255,0.08);
+    width:720px;
+    padding:24px;
+    margin:10px;
     border-radius:18px;
-    box-shadow:0 0 20px rgba(0,0,0,0.4);
+    background:rgba(90,80,60,.18);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 0 24px rgba(0,0,0,.35);
+}
+
+/* parchment */
+.calendar-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    background:
+      linear-gradient(rgba(255,255,255,.02),rgba(0,0,0,.04)),
+      radial-gradient(circle at top left, rgba(255,255,255,.08), transparent 30%);
+    pointer-events:none;
 }
 
 .header{
     text-align:center;
-    margin-bottom:15px;
 }
 
 .header h1{
+    margin:0 0 14px;
+    font-family:'Cinzel', serif;
     font-size:34px;
-    font-weight:normal;
     letter-spacing:2px;
-    color:#e8e8e8;
+    color:#f2f2f2;
 }
 
 .weekdays{
@@ -34,7 +74,7 @@ body{
     text-align:center;
     margin-bottom:10px;
     font-size:14px;
-    color:#9ca39a;
+    color:#bfc0bb;
 }
 
 .days-grid{
@@ -44,34 +84,52 @@ body{
 }
 
 .day{
-    min-height:55px;
+    min-height:58px;
     padding:8px;
-    background:rgba(255,255,255,0.03);
-    border-radius:10px;
     text-align:right;
+    border-radius:10px;
+    background:rgba(255,255,255,.03);
     font-size:16px;
-}
-
-.today{
-    background:rgba(255,255,255,0.18);
-    color:#ffffff;
-    font-weight:bold;
-    box-shadow:0 0 12px rgba(255,255,255,0.25);
+    position:relative;
 }
 
 .empty{
     background:transparent;
 }
 
+.today{
+    color:#ffffff;
+    box-shadow:0 0 12px rgba(255,255,255,.22);
+    background:rgba(255,255,255,.12);
+}
+
+.today::before{
+    content:"🐦";
+    position:absolute;
+    left:8px;
+    top:6px;
+    font-size:16px;
+}
+
+.event-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#d9d9d9;
+    position:absolute;
+    left:8px;
+    bottom:8px;
+}
+
 .events-section{
-    margin-top:24px;
+    margin-top:20px;
 }
 
 .events-section h2{
-    font-size:20px;
-    font-weight:normal;
-    color:#cfcfcf;
-    margin-bottom:10px;
+    margin:0 0 8px;
+    font-family:'Cinzel', serif;
+    font-size:22px;
+    font-weight:400;
 }
 
 #eventsList{
@@ -82,6 +140,6 @@ body{
 
 #eventsList li{
     padding:8px 0;
-    border-bottom:1px solid rgba(255,255,255,0.05);
-    font-size:15px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    font-size:16px;
 }
