@@ -3,7 +3,7 @@ const calendarDays = document.getElementById("calendarDays");
 const eventsList = document.getElementById("eventsList");
 
 /* INSERT YOUR OUTLOOK ICS LINK BELOW */
-const outlookICS = "PASTE-YOUR-ICS-LINK-HERE";
+const outlookICS = "https://outlook.office365.com/owa/calendar/43476d97a64b465ab8bebef7b385d223@easternflorida.edu/a8ed891cb6c749e997d464e5e6a1c0445745595197999061924/calendar.ics";
 
 const today = new Date();
 
